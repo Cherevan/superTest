@@ -1,0 +1,20 @@
+{
+  "name": "supertest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "andriy.js",
+  "scripts": {
+    "start": "node andriy",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cherevan/superTest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cherevan/superTest/issues"
+  },
+  "homepage": "https://github.com/Cherevan/superTest#readme"
+}
