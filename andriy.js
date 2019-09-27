@@ -1,14 +1,11 @@
 const a = 10;
-let b = 'Vsi hui:';
-const obj = {
-  ten: 100,
-};
-const arr = ['one', 2, 'hui', 56, obj.ten];
-console.log(arr[4]);
+let kkk = 'Some String';
+const obj = { ten: 100, one: 1, hour: 60, numberA: a };
 
-arr.forEach(element => {
-  console.log(element);
-});
+kkk *= 3;
+console.log(kkk);
+
+console.log(Object.keys(obj).includes('one'));
 
 // console.log(typeof obj);
 // console.log(`Ten: ${a}, Object: ${obj}`);

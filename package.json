@@ -11,7 +11,48 @@
     "type": "git",
     "url": "git+https://github.com/Cherevan/superTest.git"
   },
-  "author": "",
+  "author": "Yevhen, Artur, Andriuha, Sector",
+  "prettier": {
+    "bracketSpacing": true,
+    "parser": "babylon",
+    "printWidth": 100,
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "all",
+    "useTabs": false
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "airbnb-base",
+      "plugin:prettier/recommended"
+    ],
+    "plugins": [
+      "prettier"
+    ],
+    "root": true,
+    "rules": {
+      "prettier/prettier": "error",
+      "no-param-reassign": [
+        "error",
+        {
+          "props": false
+        }
+      ]
+    }
+  },
+  "devDependencies": {
+    "eslint": "^5.6.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "lint-staged": "^7.3.0",
+    "prettier": "^1.14.3"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Cherevan/superTest/issues"
