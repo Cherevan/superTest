@@ -1,21 +1,22 @@
-/* eslint-disable no-console */
-// function getRandomNumber(max) {
-//   return Math.floor(Math.random() * (max + 1));
-// }
+/* eslint linebreak-style: ["error", "windows"] */
+function getRandomNumber(max) {
+  return Math.floor(Math.random() * (max + 1));
+}
 
-// function bobVisitPub(bob) {
-//   return bob + getRandomNumber(6);
-// }
+function bobVisitPub(bob) {
+  return bob + getRandomNumber(6);
+}
 
-// function simulateMatch() {
-//   return {
-//     home: getRandomNumber(5),
-//     away: getRandomNumber(5),
-//   };
-// }
+function simulateMatch() {
+  return {
+    home: getRandomNumber(5),
+    away: getRandomNumber(5),
+  };
+}
 
-// const mrBob = 0;
-// const cyroz = 150;
+let mrBob = 0;
+const cyroz = 350;
+let season = 0;
 const clubs = [
   'Arsenal',
   'Man United',
@@ -27,4 +28,59 @@ const clubs = [
   'Chelsea',
 ];
 
-console.log('Clubs in League:', clubs.length);
+const table = {};
+
+for (let i = 0; i < clubs.length; i += 1) {
+  table[clubs[i]] = 0;
+}
+
+while (mrBob <= cyroz) {
+  for (let i = 0; i < clubs.length; i += 1) {
+    for (let j = 0; j < clubs.length; j += 1) {
+      if (i !== j) {
+        const play1 = simulateMatch();
+        if (play1.home > play1.away) {
+          table[clubs[i]] += 3;
+        } else if (play1.away > play1.home) {
+          table[clubs[j]] += 3;
+        } else {
+          table[clubs[j]] += 1;
+          table[clubs[i]] += 1;
+        }
+        
+        const play2 = simulateMatch();
+        if (play2.home > play2.away) {
+          table[clubs[i]] += 3;
+        } else if (play2.away > play2.home) {
+          table[clubs[j]] += 3;
+        } else {
+          table[clubs[j]] += 1;
+          table[clubs[i]] += 1;
+        }
+  
+        if (play1.home + play1.away > 6) {
+          mrBob = bobVisitPub(mrBob);
+        }
+        
+
+        if (play2.home + play2.away > 6) {
+          mrBob = bobVisitPub(mrBob);
+        }
+        
+
+        if (mrBob >= cyroz) {
+          break;
+        }
+       
+      }
+    }
+    if (mrBob >= cyroz) {
+      break;
+    }
+  }
+  season = season + 1;
+}
+
+console.log(table);
+console.log('Mr Bob', mrBob);
+console.log(`Bob saw ${season} seasons`);
