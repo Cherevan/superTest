@@ -1,0 +1,9 @@
+const samЗ = {
+name: 'Sam',
+classification: {
+kingdom: 'Anamalia',
+phylum: 'Chordata',
+}
+}
+
+consol.log (sam.classifacation.kingdom);

@@ -78,7 +78,7 @@ while (mrBob <= cyroz) {
       break;
     }
   }
-  season = season + 1;
+  seson = season + 1;
 }
 
 console.log(table);
