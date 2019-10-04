@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+/* eslint linebreak-style: ["error", "windows"] */
 function getRandomNumber(max) {
   return Math.floor(Math.random() * (max + 1));
 }
@@ -15,7 +16,7 @@ function simulateMatch() {
 }
 
 const mrBob = 0;
-const cyroz = 150;
+const cyroz = 350;
 const clubs = [
   'Arsenal',
   'Man United',
