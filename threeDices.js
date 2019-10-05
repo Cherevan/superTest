@@ -1,3 +1,5 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable no-plusplus */
 /* eslint-disable no-console */
 /* eslint linebreak-style: ["error", "windows"] */
 
@@ -7,8 +9,8 @@ function getRandomNumber() {
 
 const aim = 8;
 const diceResult = [];
-let diceSum = {};
-let throwQuantity = 1;   //just for fun:
+let diceSum;
+let throwQuantity = 1; // just for fun:
 
 while (diceSum !== aim) {
   diceSum = 0;
@@ -16,5 +18,5 @@ while (diceSum !== aim) {
     diceResult[i] = getRandomNumber();
     diceSum += diceResult[i];
   }
-  console.log('Throw #', throwQuantity++, '-', diceResult, '- Sum =', diceSum);
+  console.log('Throw #', throwQuantity++, diceResult, '\t Sum =', diceSum);
 }
