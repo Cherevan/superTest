@@ -34,11 +34,11 @@ for (let i = 0; i < clubs.length; i += 1) {
   table[clubs[i]] = 0;
 }
 
-while (cyroz >= mrBob) {
+while (cyroz >= mrBob){
   for (let i = 0; i < clubs.length; i += 1) {
-    for (let j = 0; j < clubs.length; j += 1) {
+    for (let j = 0; j < clubs.length; j += 1)
+    season = season + 1; {
       if (i !== j) {
-        
         const play1 = simulateMatch();
         if (play1.home > play1.away) {
           table[clubs[i]] += 3;
@@ -61,27 +61,23 @@ while (cyroz >= mrBob) {
 
         if (play1.home + play1.away > 6) {
           mrBob = bobVisitPub(mrBob);
-          
         }
         if (play2.home + play2.away > 6) {
           mrBob = bobVisitPub(mrBob);
-         
         }
-        
+
         if (mrBob >= cyroz) {
           break;
         }
-      
       }
     }
+
     if (mrBob >= cyroz) {
       break;
     }
   }
-  season +=1;
 }
 
 console.log(table);
-console.log('Mr Bob:', mrBob);
-console.log(season);
-
+console.log('Mr Bob drunk a lot of beer:', mrBob);
+console.log('Джон посмотрел аж вот столько сезонов', season);
