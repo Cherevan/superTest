@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 git git /* eslint-disable no-console */
+=======
+/* eslint-disable no-console */
+>>>>>>> master
 
 function getRandomNumber(max) {
   return Math.floor(Math.random() * (max + 1));
