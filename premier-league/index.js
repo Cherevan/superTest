@@ -1,48 +1,29 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable no-console */
+const fs = require('fs');
+const path = require('path');
 
-function getRandomNumber(max) {
-  return Math.floor(Math.random() * (max + 1));
-}
+const { playGame, failTeam } = require('./helper'); // получаем все функции с файла
 
-function simulateMatch() {
-  return {
-    home: getRandomNumber(5),
-    away: getRandomNumber(5),
-  };
-}
-
-// const premier = fs.readFileSync(path.resolve(__dirname, './premier.txt'), 'utf8');
-
+const premier = fs.readFileSync(path.resolve(__dirname, './premier.txt'), 'utf8'); //берем данные с файла
+const clubs = premier.split(','); // split - делает из массива разделение на рядок
 const table = {};
 
-for (let i = 0; i < clubs.length; i += 1) {
-  table[clubs[i]] = 0;
-}
+clubs.forEach(club => {
+  // forEach - метод с функцией у класса - перебирает елементы массива
+  table[club] = 0; //створюэм тейбл таблиці
+});
 
-for (let i = 0; i < clubs.length; i += 1) {
-  for (let j = 0; j < clubs.length; j += 1) {
-    if (i !== j) {
-      const play1 = simulateMatch();
-      if (play1.home > play1.away) {
-        table[clubs[i]] += 3;
-      } else if (play1.home === play1.away) {
-        table[clubs[i]] += 1;
-        table[clubs[j]] += 1;
-      } else {
-        table[clubs[j]] += 3;
-      }
-
-      const play2 = simulateMatch();
-      if (play2.home > play2.away) {
-        table[clubs[i]] += 3;
-      } else if (play2.home === play2.away) {
-        table[clubs[i]] += 1;
-        table[clubs[j]] += 1;
-      } else {
-        table[clubs[j]] += 3;
-      }
+clubs.forEach(clubA => {
+  clubs.forEach(clubB => {
+    if (clubA !== clubB) {
+      const play1 = playGame(); // две константы с результатами игр - стимулируем матч и вызанчаем каким командаам даем очки
+      const play2 = playGame();
+      table[clubA] += play1[0] + play2[1]; //таблица с ключами  названий команд table - добавить результаті игры
+      table[clubB] += play1[1] + play2[0];
     }
-  }
-}
+  });
+});
 
 console.log(table);
+console.log('failTeam team:', failTeam(table));
