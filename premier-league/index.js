@@ -4,42 +4,58 @@
 const fs = require('fs'); // fs - библиотека работающая с файловой системой;
 const path = require('path');
 
-const { playGame, failedTeam } = require('./helper');
-
-// function someFunction(one, two, three = `SHIT!`) {
-//   if (two === 666){
-//     return console.log('KOORWA!!!');
-//   }
-//   return console.log(`Value1 ${one}, Value2 ${two}, Value3 ${three}`);
-// }
-
-// someFunction('Shit', 6666, true);
+const { winTeam, getRandomInt, playGame, failedTeam } = require('./helper');
 
 const premier = fs.readFileSync(path.resolve(__dirname, './premier.txt'), 'utf8');
-const clubs = premier.split(', ');
+let clubsPremier = premier.split(',');
+const championship = fs.readFileSync(path.resolve(__dirname, './championship.txt'), 'utf8');
+const clubsChampionship = championship.split(',');
+const tablePremier = {};
+const tableChampionship = {};
 
-// console.log(premierClubs);
-
-const table = {};
-
-clubs.forEach(club => {
-  table[club] = 0;
+clubsPremier.forEach(club => {
+  tablePremier[club] = 0;
 });
 
-clubs.forEach(clubA => {
-  clubs.forEach(clubB => {
+clubsPremier.forEach(clubA => {
+  clubsPremier.forEach(clubB => {
     if (clubA !== clubB) {
       const play1 = playGame();
       const play2 = playGame();
 
-      table[clubA] += play1[0] + play2[1];
-      table[clubB] += play1[1] + play2[0];
+      tablePremier[clubA] += play1[0] + play2[1];
+      tablePremier[clubB] += play1[1] + play2[0];
     }
   });
 });
 
-console.log(table);
+clubsChampionship.forEach(club => {
+  tableChampionship[club] = getRandomInt(1488);
+});
 
-console.log('Failed team is:', failedTeam(table));
+console.log(tablePremier);
+const looserPremier = failedTeam(tablePremier);
+console.log(
+  'Looser team in Premier League is:',
+  looserPremier,
+  'Next season it will play in Championship League! Such a shame!!!',
+);
 
-// console.log(clubs.filter(x => x.startsWith('W')));
+console.log(tableChampionship);
+const winnerChampionship = winTeam(tableChampionship);
+console.log(
+  'Winner team in Championship is:',
+  winnerChampionship,
+  'Next season it will play in Premiere League! Congratulations!!!',
+);
+
+clubsPremier = clubsPremier.filter(club => club !== looserPremier);
+clubsPremier.push(winnerChampionship);
+clubsPremier.sort();
+
+clubsChampionship.filter(club => club !== winnerChampionship);
+clubsChampionship.push(looserPremier);
+clubsChampionship.sort();
+
+fs.writeFileSync(path.resolve(__dirname, './premier.txt'), clubsPremier);
+fs.writeFileSync(path.resolve(__dirname, './championship.txt'), clubsChampionship);
