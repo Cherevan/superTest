@@ -22,20 +22,20 @@ function playGame() {
     return [1, 1];
 }
 
-function failedTeam(table) {
-    let point = 99999999999;
-    let loserTeam;
+function topTeam(table1) {
+    let point = 0;
+    let winnerTeam;
     
-    Object.keys(table).forEach(club => {
-        if (table[club] < point){
-            point = table[club];
-            loserTeam = club;
+    Object.keys(table1).forEach(club => {
+        if (table1[club] > point){
+            point = table1[club];
+            winnerTeam = club;
         }
     })
 
-    return loserTeam;
+    return winnerTeam;
 }
 
     
 
-      module.exports = { playGame, failedTeam };
+      module.exports = { playGame, topTeam };
