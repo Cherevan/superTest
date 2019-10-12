@@ -57,5 +57,10 @@
   "bugs": {
     "url": "https://github.com/Cherevan/superTest/issues"
   },
-  "homepage": "https://github.com/Cherevan/superTest#readme"
+  "homepage": "https://github.com/Cherevan/superTest#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1"
+  }
 }

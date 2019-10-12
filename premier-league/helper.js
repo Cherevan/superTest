@@ -47,4 +47,9 @@ function winTeam(table) {
 
   return winner;
 }
-module.exports = { getRandomInt, simulateMatch, playGame, failedTeam, winTeam };
+
+function sum(a, b) {
+  return a + b;
+}
+
+module.exports = { sum, getRandomInt, simulateMatch, playGame, failedTeam, winTeam };
